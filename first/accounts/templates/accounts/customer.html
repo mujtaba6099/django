@@ -1,0 +1,43 @@
+{% extends 'accounts/main.html'%}
+{% block content %}
+<br>
+{% include 'accounts/cstats.html' %}
+<br>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Enter Here" aria-label="Enter" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+  	<hr>
+    <table class="table table-light">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Category</th>
+								<th scope="col">Date Order</th>
+								<th scope="col">Status</th>
+								<th scope="col">Update</th>
+								<th scope="col">Remove</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in orders %}
+							<tr>
+								<td>{{i.product}}</td>
+								<td>{{i.product.category}}</td>
+								<td>{{i.product.day_created}}</td>
+								<td>{{i.status}}</td>
+								<td><a type="button" class="btn btn-success" href="{% url 'update_order' i.id%}">Update</a></td>
+								<td><a type="button" class="btn btn-danger" href="{% url 'delete_order' i.id %}">Remove</a></td>
+							</tr>
+							{%endfor%}
+						</tbody>
+
+					</table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'accounts/main.html'%}
+{% block content %}
+<br>
+{% include 'accounts/stats.html' %}
+<br>
+<div class="row">
+	<!-- Customer -->
+	
+		<div class="col-md-5">
+			<div  class="card">
+				<h1 style="text-align: center;">Customer</h1>
+				<hr>
+				<div class="card-body">
+					<a type="button" class="btn btn-primary btn-lg btn-block">Create Customer</a>
+					<table class="table table-light">
+						<thead>
+							<tr>
+								<th scope="col">Customer</th>
+								<th scope="col">Phone</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in customers %}
+							<tr>
+								<td><a type="button" class="btn btn-info"href="{% url 'customer' i.id %}">View</a></td>
+								<td>{{i.name}}</td>
+								<td>{{i.phone}}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+
+					</table>
+				</div>
+			</div>
+		
+	</div>
+	
+	<!-- last 5 orders -->
+	<div class="col-md-7 ">
+			<div  class="card">
+				<h1 style="text-align: center;">Last 5 Orders</h1>
+				<hr>
+				<div class="card-body">
+					<a type="button" class="btn btn-primary btn-lg btn-block" href="{% url 'create_order'%}">Create Order</a>
+					<table class="table table-light">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Date order</th>
+								<th scope="col">Status</th>
+								<th scope="col">Update</th>
+								<th scope="col">Remove</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for i in orders %}
+							<tr>
+								<td>{{i.product}}</td>
+								<td>{{i.day_created}}</td>
+								<td>{{i.status}}</td>
+								<td><a type="button" class="btn btn-success" href="{% url 'update_order' i.id%}">Update</a></td>
+								<td><a type="button" class="btn btn-danger" href="{% url 'delete_order' i.id %}">Delete</a></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+
+
+					</table>
+				</div>
+		</div>
+	</div>
+	
+
+</div>
+
+{% endblock %}

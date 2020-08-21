@@ -1,0 +1,45 @@
+{% extends 'accounts/main.html'%}
+{% block content %}
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<h1>Products</h1>
+				<hr>
+			</div>
+		</div>
+	</div>
+
+</div>
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Product</th>
+							<th scope="col">Category</th>
+							<th scope="col">Price</th>
+							
+						</tr>
+					</thead>
+					{% for i in products %}
+					<tbody>
+					<tr>
+						<td>{{i.name}}</td>
+						<td>{{i.category}}</td>
+						<td>{{i.price}}</td>
+					</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
